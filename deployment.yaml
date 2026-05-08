@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: python-flask-deployment
+
+spec:
+  replicas: 5
+
+  selector:
+    matchLabels:
+      app: python-flask
+
+  template:
+    metadata:
+      labels:
+        app: python-flask
+
+    spec:
+      containers:
+      - name: python-flask-container
+        image: karthikeyanchandru/python-flask-app:v1
+
+        ports:
+        - containerPort: 5000
